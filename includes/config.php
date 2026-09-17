@@ -3,11 +3,11 @@
  * GK224.COM - Global Configuration & Environment Settings
  */
 
-// Start session securely if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    ini_set('session.cookie_httponly', 1);
-    ini_set('session.use_only_cookies', 1);
-    session_start();
+// Start session securely if not already started and headers not yet sent
+if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+    @ini_set('session.cookie_httponly', 1);
+    @ini_set('session.use_only_cookies', 1);
+    @session_start();
 }
 
 // Timezone
