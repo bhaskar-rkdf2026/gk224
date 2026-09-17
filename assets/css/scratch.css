@@ -1,0 +1,591 @@
+/* ==========================================================================
+   GK224.COM - Scratchpad, Courses, Freelance, Surveys & Cards CSS
+   ========================================================================== */
+
+/* ── LUCKY SCRATCHPAD MODAL & CANVAS ── */
+.scratch-modal-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.sc-stat {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  text-align: center;
+}
+.sc-stat-num {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.sc-stat-lbl {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scratch-arena {
+  background: linear-gradient(165deg, rgba(181,212,0,0.08), var(--surface2) 65%);
+  border: 1px solid rgba(181,212,0,0.3);
+  border-radius: var(--r);
+  padding: 18px 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.scratch-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.scratch-card-badge {
+  background: rgba(181,212,0,0.18);
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(181,212,0,0.35);
+}
+.scratch-card-title-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.scratch-pad-big {
+  width: 100%;
+  max-width: 360px;
+  height: 190px;
+  margin: 0 auto;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  border: 2px solid rgba(181,212,0,0.35);
+  background: #111116;
+}
+
+.scratch-reward-big {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #1e3302 0%, #0d1a01 100%);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  z-index: 1;
+}
+.scratch-reward-big.claimed-bg {
+  background: radial-gradient(circle at 50% 30%, #1a2538 0%, #0d121c 100%);
+}
+.srb-icon {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 2px;
+  animation: rewardBounce 0.6s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes rewardBounce {
+  0% { transform: scale(0.3) rotate(-20deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.srb-amount {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.srb-label {
+  font-size: 0.76rem;
+  color: #e6e6ee;
+  font-weight: 600;
+}
+.srb-sparkles {
+  font-size: 0.8rem;
+  color: var(--accent3);
+  margin-top: 4px;
+}
+
+#scratchCanvasBig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  z-index: 2;
+  cursor: crosshair;
+  touch-action: none;
+  transition: opacity 0.35s ease;
+}
+#scratchCanvasBig.cleared {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scratch-instructions {
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.scratch-instructions i {
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.scratch-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+.sc-item-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  position: relative;
+}
+.sc-item-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.sc-item-card.active-card {
+  border-color: var(--accent);
+  background: linear-gradient(155deg, rgba(181,212,0,0.12), var(--surface2));
+  box-shadow: 0 4px 14px rgba(181,212,0,0.15);
+}
+.sc-item-card.sc-done {
+  opacity: 0.75;
+}
+.sc-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.sc-item-ico {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(181,212,0,0.15);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+.sc-item-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+.sc-badge-ready { background: rgba(181,212,0,0.2); color: var(--accent); }
+.sc-badge-claimed { background: rgba(34,197,94,0.15); color: var(--green); }
+.sc-item-title { font-size: 0.78rem; font-weight: 700; margin-bottom: 2px; }
+.sc-item-desc { font-size: 0.68rem; color: var(--muted); }
+
+/* ── FREELANCE MARKETPLACE ── */
+.fl-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0 16px;
+  background: var(--surface2);
+  padding: 4px;
+  border-radius: var(--r-sm);
+}
+.fl-tab {
+  flex: 1;
+  text-align: center;
+  padding: 9px 6px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+}
+.fl-tab.active {
+  background: var(--accent);
+  color: #0a0a0f;
+  box-shadow: 0 4px 12px rgba(181,212,0,0.25);
+}
+.fl-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.fl-stat {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 6px;
+  text-align: center;
+}
+.fl-stat-num { font-family: var(--font-head); font-size: 1.05rem; font-weight: 800; color: var(--accent); }
+.fl-stat-lbl { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+.fl-project {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.fl-project:hover {
+  border-color: rgba(181,212,0,0.35);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+.fl-project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.fl-project-co {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 3px;
+}
+.fl-project-title { font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
+.fl-project-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.fl-badge-open { background: rgba(181,212,0,0.15); color: var(--accent); border: 1px solid rgba(181,212,0,0.3); }
+.fl-badge-urgent { background: rgba(255,90,90,0.15); color: var(--red); border: 1px solid rgba(255,90,90,0.3); }
+.fl-badge-mine { background: rgba(90,160,255,0.15); color: #6fa8ff; border: 1px solid rgba(90,160,255,0.3); }
+.fl-project-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+.fl-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.fl-skill-chip {
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.fl-project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+.fl-meta-left { display: flex; flex-direction: column; gap: 2px; }
+.fl-budget { font-family: var(--font-head); font-size: 1.05rem; font-weight: 800; color: var(--accent); }
+.fl-deadline { font-size: 0.68rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+.fl-take-btn {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #0a0a0f;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.fl-take-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.fl-take-btn.taken { background: var(--surface); color: var(--muted); }
+
+/* ── VILLAGE SURVEY ── */
+.survey-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(181,212,0,0.1), rgba(168,168,176,0.1));
+  border: 1px solid rgba(181,212,0,0.25);
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+.survey-counter-num {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.survey-counter-lbl { font-size: 0.72rem; color: var(--muted); }
+.survey-entry-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.survey-entry-item:last-child { border-bottom: none; }
+.survey-entry-ico {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  background: var(--surface2);
+  color: var(--accent);
+}
+.survey-entry-name { font-size: 0.85rem; font-weight: 600; }
+.survey-entry-meta { font-size: 0.7rem; color: var(--muted); margin-top: 1px; }
+.survey-entry-amt {
+  margin-left: auto;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--green);
+}
+
+/* ── STATIONERY STORE ── */
+.stationery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.stationery-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 14px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.stationery-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(181,212,0,0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.stationery-item .ico {
+  width: 46px; height: 46px;
+  margin: 0 auto 8px;
+  font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(155deg, rgba(255,255,255,0.13), rgba(255,255,255,0.02) 45%, rgba(0,0,0,0.2));
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--accent);
+}
+.stationery-name { font-size: 0.8rem; font-weight: 600; margin-bottom: 3px; }
+.stationery-price {
+  font-size: 0.92rem;
+  font-weight: 800;
+  font-family: var(--font-head);
+  color: var(--accent);
+  margin-bottom: 9px;
+}
+.stationery-buy-btn {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #0a0a0f;
+  font-weight: 700;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.stationery-buy-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* ── COURSES & CERTIFICATES ── */
+.course-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  transition: all 0.25s;
+}
+.course-card:hover {
+  border-color: rgba(181,212,0,0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.course-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.badge-fin { background: rgba(181,212,0,0.15); color: var(--accent); }
+.badge-mkt { background: rgba(110,140,0,0.15); color: var(--accent3); }
+.badge-photo { background: rgba(168,168,176,0.15); color: #c7c7cf; }
+.course-title {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.course-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+.course-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.course-price {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.village-impact-card {
+  background: linear-gradient(155deg, rgba(181,212,0,0.10), var(--surface) 60%);
+  border: 1px solid rgba(181,212,0,0.25);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.vic-head {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.vic-head i { color: var(--accent); }
+.vic-stats { display: flex; justify-content: space-between; }
+.vic-stat { text-align: center; flex: 1; }
+.vic-num {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+.vic-lbl { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+
+.success-stories { margin-bottom: 16px; }
+.ss-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px;
+}
+.ss-title i { color: var(--accent); }
+.ss-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.ss-card {
+  flex: 0 0 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 14px;
+}
+.ss-avatar { font-size: 1.6rem; margin-bottom: 6px; }
+.ss-name { font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
+.ss-text { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+
+.cert-preview {
+  background: radial-gradient(circle at 50% 0%, rgba(181,212,0,0.10), var(--surface) 60%);
+  border: 2px solid var(--accent);
+  border-radius: var(--r);
+  padding: 28px 20px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.cert-badge { font-size: 2.2rem; margin-bottom: 10px; }
+.cert-line1, .cert-line2 { font-size: 0.78rem; color: var(--muted); }
+.cert-name {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin: 6px 0;
+}
+.cert-course {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent);
+  margin: 8px 0;
+}
+.cert-date { font-size: 0.7rem; color: var(--muted); margin-bottom: 14px; }
+.cert-brand {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--accent2);
+}
+
+/* ── TRAVEL CARDS ── */
+.travel-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s;
+}
+.travel-card:hover {
+  border-color: rgba(181,212,0,0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.travel-dest {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.travel-info { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
+.travel-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.travel-price {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent3);
+}
+.travel-price small { font-size: 0.7rem; color: var(--muted); font-weight: 400; font-family: var(--font-body); }
