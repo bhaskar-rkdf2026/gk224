@@ -1,0 +1,47 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/index.php"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/learn.php"
+  to = "/learn.html"
+  status = 200
+
+[[redirects]]
+  from = "/earn.php"
+  to = "/earn.html"
+  status = 200
+
+[[redirects]]
+  from = "/travel.php"
+  to = "/travel.html"
+  status = 200
+
+[[redirects]]
+  from = "/profile.php"
+  to = "/profile.html"
+  status = 200
+
+[[redirects]]
+  from = "/referral.php"
+  to = "/referral.html"
+  status = 200
+
+[[redirects]]
+  from = "/scratchpad.php"
+  to = "/scratchpad.html"
+  status = 200
+
+[[redirects]]
+  from = "/login.php"
+  to = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/logout.php"
+  to = "/login.html?logged_out=1"
+  status = 200

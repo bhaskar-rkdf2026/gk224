@@ -1,0 +1,26 @@
+# Netlify Redirects & URL Rewrites for GK224.COM
+# Maps legacy/PHP endpoints to static HTML pages
+
+/index.php              /index.html             200
+/learn.php              /learn.html             200
+/earn.php               /earn.html              200
+/travel.php             /travel.html            200
+/profile.php            /profile.html           200
+/referral.php           /referral.html          200
+/reffral.php            /referral.html          301
+/scratchpad.php         /scratchpad.html        200
+/login.php              /login.html             200
+/logout.php             /login.html?logged_out=1 200
+
+# Clean URL aliases
+/pay                    /index.html             200
+/learn                  /learn.html             200
+/earn                   /earn.html              200
+/travel                 /travel.html            200
+/profile                /profile.html           200
+/referral               /referral.html          200
+/scratchpad             /scratchpad.html        200
+/login                  /login.html             200
+
+# Fallback for root and undefined paths
+/                       /index.html             200

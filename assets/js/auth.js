@@ -257,6 +257,22 @@ function verifyModalOtp() {
   }, 300);
 }
 
+// ─── ENVIRONMENT AWARE URL HELPER ─────────────────────────
+function getAppUrl(page) {
+  const isStatic = window.location.pathname.endsWith('.html') || 
+                   (!window.location.pathname.includes('.php') && !window.location.origin.includes('localhost'));
+  if (page === 'home') {
+    return isStatic ? 'index.html?welcome=1' : 'index.php?welcome=1';
+  }
+  if (page === 'login') {
+    return isStatic ? 'login.html' : 'login.php';
+  }
+  if (page === 'logout') {
+    return isStatic ? 'login.html?logged_out=1' : 'logout.php';
+  }
+  return page;
+}
+
 // ─── QUICK DEMO LOGIN (WORKS ANYWHERE) ──────────────────────
 function quickDemoLogin() {
   const demoData = {
@@ -277,10 +293,10 @@ function quickDemoLogin() {
       }
     }, 300);
   } else {
-    // If on standalone login.php
+    // If on standalone login page
     showToast('Logging in as Demo User...', 'success');
     setTimeout(() => {
-      window.location.href = 'index.php?welcome=1';
+      window.location.href = getAppUrl('home');
     }, 600);
   }
 }
@@ -310,7 +326,7 @@ function doLogin() {
   markLoggedIn(userData);
 
   setTimeout(() => {
-    window.location.href = 'index.php?welcome=1';
+    window.location.href = getAppUrl('home');
   }, 700);
 }
 
@@ -341,7 +357,7 @@ function doSignup() {
   markLoggedIn({ name: fullName, email: email, phone: phone });
 
   setTimeout(() => {
-    window.location.href = 'index.php?welcome=1';
+    window.location.href = getAppUrl('home');
   }, 800);
 }
 
@@ -361,7 +377,7 @@ function googleLogin() {
     }, 300);
   } else {
     setTimeout(() => {
-      window.location.href = 'index.php?welcome=1';
+      window.location.href = getAppUrl('home');
     }, 800);
   }
 }
@@ -385,7 +401,7 @@ function doLogout() {
     openAuthModal(true);
   } else {
     setTimeout(() => {
-      window.location.href = 'logout.php';
+      window.location.href = getAppUrl('logout');
     }, 400);
   }
 }
